@@ -1,0 +1,13 @@
+# Django
+.env
+*.sqlite3
+__pycache__/
+*.py[cod]
+
+# PostgreSQL
+*.dump
+*.backup
+
+# IDE/Editor
+.idea/
+.vscode/
