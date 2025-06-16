@@ -1,0 +1,77 @@
+
+{% block most_seller_tecno %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Glide.js CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="static/css/index.css"><!--estilo del glide--> 
+</head>
+<body>
+    <div class="container my-5">
+        <h2>Lo mas vendido en tecnologia</h2>
+        <!-- Carrusel -->
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    {% for product in products %}
+                    {% if forloop.counter0|divisibleby:4 %}
+                    <li class="glide__slide">
+                        <div class="row">
+                            {% endif %}
+                            <div class="col-md-3 mb-4"> <!-- 4 cards por fila (12/3=4) -->
+                                <div class="card h-100">
+                                    <img src="{{ product.image_product.url }}" class="card-img-top"
+                                        alt="{{ product.name }}">
+                                    <div class="card-body shadow">
+                                        <h5 class="card-title">{{ product.name }}</h5>
+                                        <p class="card-text">{{ product.description }}</p>
+                                        <p class="card-text">{{product.price}}$</p>
+                                        <button type="button" class="btn">
+                                    </div>
+                                </div>
+                            </div>
+                            {% if forloop.counter|divisibleby:4 or forloop.last %}
+                        </div>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- Bullets (puntos de navegación) -->
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="glide__bullets" data-glide-el="controls[nav]">
+                    {% widthratio products|length 4 1 as total_slides %}
+                    {% for i in "x"|ljust:total_slides %}
+                    <button class="glide__bullet" data-glide-dir="={{ forloop.counter0 }}"></button>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS (opcional, solo si necesitas componentes JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Glide.js JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <!-- Inicialización de Glide -->
+    <script>
+        new Glide('.glide', {
+            type: 'carousel',
+            perView: 1,  // 1 slide con 4 cards
+            gap: 0,
+            autoplay: 5000, // duracion para el cambio automatico
+            animationDuration: 900, // duracion de la animacion de cambio entre slide
+            breakpoints: {
+                992: { perView: 1 },  // para que sea responsivo con los celus
+            }
+        }).mount();
+    </script>
+
+{% endblock most_seller_tecno %}
+</body>
+</html>
