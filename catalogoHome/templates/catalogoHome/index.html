@@ -1,19 +1,12 @@
-{% extends "carousel_tecno_mostseller.html" %}
+{% extends "core/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <!-- Bootstrap 5 CSS -->
-</head>
+{% block contenido %}
+    {% include "catalogoHome/catalogs/carousel_tecno_mostseller.html" %}
+    
+    {% include "catalogoHome/catalogs/allcategories.html" %}
 
-<body>
-    {% include "catalogoHome/carousel_tecno_mostseller.html"%}
-    {% block "most_seller_tecno" %}{% endblock "most_seller_tecno" %}
-    {% include "catalogoHome/carousel_tecno_mostseller.html" %}
-</body>
+{% endblock contenido %}
 
-</html>
+
+

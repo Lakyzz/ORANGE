@@ -1,0 +1,69 @@
+{% block all_categories %}
+
+<body>
+    <div class="container my-5">
+        <h2>Most demanded categories</h2>
+        <!-- Carrusel -->
+        <div class="glide" id="glide_categories">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    {% for category in categories %}
+                    
+                    {% if forloop.counter0|divisibleby:3 %}
+                    <li class="glide__slide">
+                        <div class="row">
+                            {% endif %}
+                            <div class="col-md-4 mb-4"> <!-- 4 cards por fila (12/3=4) -->
+                                <div class="card h-100">
+                                    <img src="{{ category.image_category.url }}" class="card-img-top"
+                                        alt="{{ category.category_name }}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ category.category_name }}</h5>
+                                        <p class="card-text">{{ category.category_description }}</p>
+                                        <p class="card-text">{{category.parent}}-categoria padre</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if forloop.counter|divisibleby:3 or forloop.last %}
+                        </div>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- Bullets (puntos de navegación) -->
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="glide__bullets" data-glide-el="controls[nav]">
+                    {% widthratio categories|length 3 1 as total_slides %}
+                    {% for i in "x"|ljust:total_slides %}
+                    <button class="glide__bullet" data-glide-dir="={{ forloop.counter0 }}"></button>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS (opcional, solo si necesitas componentes JS) -->
+
+    <!-- Glide.js JS -->>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <!-- Inicialización de Glide -->
+    <script>
+        new Glide('#glide_categories', {
+            type: 'carousel',
+            perView: 1,  // 1 slide con 4 cards
+            gap: 0,
+            autoplay: 5000, // duracion para el cambio automatico
+            animationDuration: 900, // duracion de la animacion de cambio entre slide
+            breakpoints: {
+                992: { perView: 1 },  // para que sea responsivo con los celus
+            }
+        }).mount();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    {% endblock all_categories %}
+</body>
+
+</html>
