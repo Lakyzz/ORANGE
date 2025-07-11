@@ -8,6 +8,7 @@
     <title>Orange</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
     <link rel="stylesheet" href="static/css/index.css">
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -15,43 +16,85 @@
 <body>
     <!--inicio del bloque de menu/nav bar-->
     {% block menu %}
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'catalogo' %}">
-                <img src="{{ MEDIA_URL }}media/logo/icons8-orange-64.png" alt="" class="d-inline-block align-text-top">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Menú
+        <header>
+            <div class="left">
+                <div class="menu-container">
+                    <div class="menu" id="menu">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="brand">
+                    <img src="media/logo/icons8-orange-64.png" alt="">
+                    <span class="name">Orange</span>
+                </div>
+            </div>
+
+            <div class="right">
+                <a href="" class="icon-header">
+                    <img src="media/logo/basket-free-material-svgrepo-com.svg" alt="">
+                </a>
+                <a href="" class="icon-header">
+                    <img src="media/logo/user-svgrepo-com.svg" class="user" alt="">
+                </a>
+            </div>
+        </header>
+        <div class="sidebar" id="sidebar">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="" class="search">
+                            <img src="media/logo/search-alt-svgrepo-com.svg" alt="">
+                            <span>Search</span>
                         </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li>
-                                <hr class= "dropdown-divider">
-                                <h3>CATEGORIAS</h3>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Tecnologia</a></li>
-                            <li><a class="dropdown-item" href="#">Electrodomesticos</a></li>
-                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <li>
+                        <a href="" class="" >
+                            <img src="media/logo/home-1-svgrepo-com.svg" alt="">
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="">
+                            <img src="media/logo/laptop-alt-2-svgrepo-com.svg" alt="">
+                            <span>Tecnology</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="media/logo/furniture-svgrepo-com.svg" alt="">
+                            <span>Furniture</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="media/logo/sports-shoes-2-svgrepo-com.svg" alt="">
+                            <span>Shoes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="media/logo/men-svgrepo-com.svg" alt="">
+                            <span>Men</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="media/logo/women-svgrepo-com.svg" alt="">
+                            <span>Women</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <img src="media/logo/smartphone-svgrepo-com.svg" alt="">
+                            <span>Smartphones</span>
+                        </a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+            </nav>
         </div>
-    </nav>
+        
     {% endblock menu %}
     <!--fin del bloque de menu/nav bar-->
 
@@ -72,6 +115,7 @@
     {% block footer %}
    
     {% endblock footer %}
+    <script src="static/js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
 

@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+<body>
+    <div class="container">
+        <h1>Tecnologia</h1>
+
+        <div class="row">
+            {% for product in products %}
+            <div class="card col-md-3 m-5">
+                <img class="card-img-top" src="{{product.image_product.url}}" alt="product.name"><!--imagen del card-->
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <p class="card-text">{{product.price}}$</p>
+                    <p class="card-text">{{product.category}}</p>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center align-items-center ">
+                        <button class="btn btn-danger">Ver producto</button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</body>
+{% endblock contenido %}

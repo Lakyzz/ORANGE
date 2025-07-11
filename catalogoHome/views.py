@@ -13,3 +13,4 @@ def catalogo_home(request):
     }
 
     return render(request, 'catalogoHome/index.html', context)
+
