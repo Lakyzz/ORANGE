@@ -40,60 +40,102 @@
                 </a>
             </div>
         </header>
+        
         <div class="sidebar" id="sidebar">
             <nav>
-                <ul>
-                    <li>
-                        <a href="" class="search">
+                
+                <ul class="general-ul">
+                    <li class="menu-item menu-item-static">
+                        <a class="search">
                             <img src="media/logo/search-alt-svgrepo-com.svg" alt="">
                             <span>Search</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="" class="" >
+                    <li class="menu-item menu-item-static">
+                        <a class="" >
                             <img src="media/logo/home-1-svgrepo-com.svg" alt="">
                             <span>Home</span>
                         </a>
+                        
                     </li>
-                    <li>
-                        <a href="" class="">
+                    <li class="menu-item-dropdown">
+                        <a class="">
                             <img src="media/logo/laptop-alt-2-svgrepo-com.svg" alt="">
-                            <span>Tecnology</span>
+                            <span>Technology</span>
+                            <i class="bx bx-chevron-down"></i>
                         </a>
+                        <ul class="sub-menu">
+                            {% for category in all_categories %}
+                                {% if category.parent.category_name == 'Technology' %}
+                                    <li><a class="sub-menu-link">{{category.category_name}}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
                     </li>
-                    <li>
-                        <a href="">
+                    <li class="menu-item-dropdown">
+                        <a>
                             <img src="media/logo/furniture-svgrepo-com.svg" alt="">
-                            <span>Furniture</span>
+                            <span>Home</span>
+                            <i class="bx bx-chevron-down"></i>
                         </a>
+                        <ul class="sub-menu">
+                            {% for category in all_categories %}
+                                {% if category.parent.category_name == 'Home' %}
+                                    <li><a class="sub-menu-link">{{category.category_name}}</a></li>
+                                {% endif %}
+                            {% endfor %}   
+                        </ul>
                     </li>
-                    <li>
-                        <a href="">
+                    <li class="menu-item-dropdown">
+                        <a >
                             <img src="media/logo/sports-shoes-2-svgrepo-com.svg" alt="">
                             <span>Shoes</span>
+                            <i class="bx bx-chevron-down"></i>
                         </a>
+                        <ul class="sub-menu">
+                        {% for category in all_categories %}
+                            {% if category.parent.category_name == 'Shoes' %}
+                                    <li><a class="sub-menu-link">{{category.category_name}}</a></li>
+                            {% endif %}
+                        {% endfor %}                              
+                        </ul>
                     </li>
-                    <li>
-                        <a href="">
-                            <img src="media/logo/men-svgrepo-com.svg" alt="">
-                            <span>Men</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
+                    
+                    <li class="menu-item-dropdown">
+                        <a>
                             <img src="media/logo/women-svgrepo-com.svg" alt="">
-                            <span>Women</span>
+                            <span>Woman</span>
+                            <i class="bx bx-chevron-down"></i>
                         </a>
+                        <ul class="sub-menu">
+                            {% for category in all_categories %}
+                                {% if category.parent.category_name == 'Woman' %}
+                                <li><a class="sub-menu-link">{{category.category_name}}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
                     </li>
-                    <li>
-                        <a href="">
+                    <li class="menu-item-dropdown">
+                        <a>
                             <img src="media/logo/smartphone-svgrepo-com.svg" alt="">
                             <span>Smartphones</span>
+                            <i class="bx bx-chevron-down"></i>
                         </a>
+                        <ul class="sub-menu">
+                            {% for category in all_categories %}
+                                {% if category.parent.category_name == 'Cellphones' %}
+                                    <li><a class="sub-menu-link">{{category.category_name}}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
                     </li>
                 </ul>
+                
             </nav>
         </div>
+       
+        
+        
         
     {% endblock menu %}
     <!--fin del bloque de menu/nav bar-->

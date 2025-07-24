@@ -1,7 +1,20 @@
 
 {% block most_seller_tecno %}
 
-
+    <style>
+        .card .card-body{
+            height: 120px;
+            width: auto;
+            font-size: 12px;
+            margin-bottom: 55px;
+        }
+        .card-img-top{
+            object-fit: cover;
+            overflow: hidden;
+            padding: 5px 5px 5px 5px;
+            
+        }
+    </style>
     <div class="container my-5">
         <h2>Most seller</h2>
         <!-- Carrusel -->
@@ -9,19 +22,20 @@
             <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
                     {% for product in products %}
-                    {% if forloop.counter0|divisibleby:4 %}
+                    {% if forloop.counter0|divisibleby:6 %}
                     <li class="glide__slide">
                         <div class="row">
                             {% endif %}
-                            <div class="col-md-3 mb-4"> <!-- 4 cards por fila (12/3=4) -->
+                            <div class="col-md-2 mb-4"> <!-- 4 cards por fila (12/3=4) -->
                                 <div class="card h-100">
+                                    {% if product.image_product %}
                                     <img src="{{ product.image_product.url }}" class="card-img-top"
                                         alt="{{ product.name }}">
+                                    {% endif %}
                                     <div class="card-body">
                                         <h5 class="card-title">{{ product.name }}</h5>
                                         <p class="card-text">{{ product.description }}</p>
-                                        <p class="card-text">{{product.price}}$</p>
-                                        <p class="card-text">{{product.category}}</p>  
+                                        <p class="card-text">{{product.price}}$</p> 
                                     </div>
                                     <div class="card-footer">
                                         <div  class="d-flex justify-content-center align-items-center">
@@ -30,7 +44,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {% if forloop.counter|divisibleby:4 or forloop.last %}
+                            {% if forloop.counter|divisibleby:6 or forloop.last %}
                         </div>
                     </li>
                     {% endif %}
@@ -40,7 +54,7 @@
             <!-- Bullets (puntos de navegación) -->
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="glide__bullets" data-glide-el="controls[nav]">
-                    {% widthratio products|length 4 1 as total_slides %}
+                    {% widthratio products|length 6 1 as total_slides %}
                     {% for i in "x"|ljust:total_slides %}
                     <button class="glide__bullet" data-glide-dir="={{ forloop.counter0 }}"></button>
                     {% endfor %}

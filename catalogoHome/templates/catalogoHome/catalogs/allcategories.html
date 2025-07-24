@@ -7,23 +7,25 @@
     <div class="glide" id="glide_categories">
         <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
-                {% for category in categories %}
-
+                {% for category in categories_photo %}
                 {% if forloop.counter0|divisibleby:3 %}
                 <li class="glide__slide">
                     <div class="row">
                         {% endif %}
+
                         <div class="col-md-4 mb-4"> <!-- 4 cards por fila (12/3=4) -->
                             <div class="card h-100">
+
                                 <img src="{{ category.image_category.url }}" class="card-img-top"
                                     alt="{{ category.category_name }}">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ category.category_name }}</h5>
                                     <p class="card-text">{{ category.category_description }}</p>
-                                    <p class="card-text">{{category.parent}}-categoria padre</p>
                                 </div>
+
                             </div>
                         </div>
+
                         {% if forloop.counter|divisibleby:3 or forloop.last %}
                     </div>
                 </li>
@@ -34,7 +36,7 @@
         <!-- Bullets (puntos de navegación) -->
         <div class="d-flex justify-content-center align-items-center h-100">
             <div class="glide__bullets" data-glide-el="controls[nav]">
-                {% widthratio categories|length 3 1 as total_slides %}
+                {% widthratio categories_photo|length 3 1 as total_slides %}
                 {% for i in "x"|ljust:total_slides %}
                 <button class="glide__bullet" data-glide-dir="={{ forloop.counter0 }}"></button>
                 {% endfor %}

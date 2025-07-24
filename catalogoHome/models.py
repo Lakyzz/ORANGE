@@ -14,7 +14,7 @@ class Category(models.Model):
         null=True,
         blank=True,
         related_name='children',
-        verbose_name="Categoría padre"
+        verbose_name="parent"
     )
     demanded = models.BooleanField(verbose_name='demanded state',null=True,blank=True)
     
