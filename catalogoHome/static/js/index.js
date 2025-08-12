@@ -28,7 +28,7 @@ menuItemsDropdown.forEach((menuItem)=>{
                 subMenu.style.height = '0';
                 subMenu.style.padding = '0';
             }
-        }
+        }//cerrar categorias si se abre otra
         menuItemsDropdown.forEach((item)=>{
             if(item !== menuItem){
                 const otherSubmenu = item.querySelector('.sub-menu')

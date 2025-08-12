@@ -1,0 +1,68 @@
+{% block initial_posters %}
+
+<style>
+    
+</style>
+
+
+<!-- Carrusel -->
+<div class="container poster">
+    <div class="glide" id="glide_posters">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                {% for poster in posters %}
+                {% if forloop.counter0|divisibleby:1 %}
+                <li class="glide__slide">
+                    <div class="row">
+                        {% endif %}
+                        <div class="image-container"> <!-- 4 cards por fila (12/3=4) -->
+                            <img class="poster-image" src="{{poster.poster_image.url}}" alt="imagen de referencia">
+                        </div>
+                        {% if forloop.counter|divisibleby:1 or forloop.last %}
+                    </div>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="glide__bullets" data-glide-el="controls[nav]">
+                {% widthratio posters|length 1 1 as total_slides %}
+                {% for i in "x"|ljust:total_slides %}
+                <button class="glide__bullet" data-glide-dir="={{ forloop.counter0 }}"></button>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<!-- Bootstrap 5 JS (opcional, solo si necesitas componentes JS) -->
+
+<!-- Glide.js JS -->
+<script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+<!-- Inicialización de Glide -->
+<script>
+    new Glide('#glide_posters', {
+        type: 'carousel',
+        perView: 1,  // 1 slide con 4 cards
+        gap: 0,
+        autoplay: 5000,
+        peek: 0, // duracion para el cambio automatico
+        animationDuration: 500, // duracion de la animacion de cambio entre slide
+        breakpoints: {
+            992: { perView: 1 },  // para que sea responsivo con los celus
+        },
+        rewind: true,
+    }).mount();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+{% endblock initial_posters %}

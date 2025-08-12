@@ -18,7 +18,7 @@
  }
 
  .glide__bullet--active {
-     background-color: #0d6efd;
+     background-color: #e7650e;
      /* Color de Bootstrap primary */
  }
 
@@ -257,7 +257,34 @@
    font-weight: 500;
    border-radius: 0.3rem;
 }
+.container.poster{
+        margin-top: 10rem;
+        width: 1140px;
+        height: 500px;
+        transition: transform 0.2s ease;
+        
+    }
 
+    .image-container {
+        width: 1140px;
+        height: 400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        
+    }
+    .container.poster:hover{
+       transform: scale(1.05);
+       
+    }
+
+    .poster-image {
+        max-height: 100%;
+        width: 100%;
+        
+    }
 
 
 /*responsivo */

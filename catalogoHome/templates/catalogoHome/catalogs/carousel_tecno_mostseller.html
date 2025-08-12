@@ -2,11 +2,27 @@
 {% block most_seller_tecno %}
 
     <style>
+        .container .my-5{
+            padding: 15px;
+        }
+       h2{
+        margin-top: 7rem;
+        font-size: 1.5rem;
+       }
+       .card{
+        margin-top: 5px;
+        transition: transform 0.2s ease;
+       }
         .card .card-body{
             height: 120px;
             width: auto;
             font-size: 12px;
             margin-bottom: 55px;
+            cursor: pointer;
+            
+        }
+        .card:hover{
+            transform: scale(1.02);
         }
         .card-img-top{
             object-fit: cover;
@@ -14,9 +30,11 @@
             padding: 5px 5px 5px 5px;
             
         }
+        
+        
     </style>
     <div class="container my-5">
-        <h2>Most seller</h2>
+        <h2>Most seller in technology</h2>
         <!-- Carrusel -->
         <div class="glide" id="glide_products">
             <div class="glide__track" data-glide-el="track">
@@ -26,7 +44,9 @@
                     <li class="glide__slide">
                         <div class="row">
                             {% endif %}
+                            
                             <div class="col-md-2 mb-4"> <!-- 4 cards por fila (12/3=4) -->
+                               
                                 <div class="card h-100">
                                     {% if product.image_product %}
                                     <img src="{{ product.image_product.url }}" class="card-img-top"
@@ -35,7 +55,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{ product.name }}</h5>
                                         <p class="card-text">{{ product.description }}</p>
-                                        <p class="card-text">{{product.price}}$</p> 
+                                        <p class="card-text">{{ product.price }}$</p> 
                                     </div>
                                     <div class="card-footer">
                                         <div  class="d-flex justify-content-center align-items-center">
@@ -70,6 +90,7 @@
             type: 'carousel',
             perView: 1,  // 1 slide con 4 cards
             gap: 0,
+            peek:0,
             autoplay: 5000, // duracion para el cambio automatico
             animationDuration: 900, // duracion de la animacion de cambio entre slide
             breakpoints: {

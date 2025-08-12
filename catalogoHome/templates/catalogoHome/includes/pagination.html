@@ -1,0 +1,91 @@
+{% block pagination %}
+
+{% if page_obj.paginator.num_pages >= 1 %}
+
+<style>
+    <style>.pagination {
+        border: none;
+        /* Removemos el borde verde */
+    }
+
+    .page-link {
+        color: #FF8C00;
+        /* Color naranja para los números y flechas */
+        border: 1px solid #FFE4C4;
+        /* Borde suave en tono melocotón */
+        outline: none !important;
+        /* Elimina el outline al hacer click */
+        box-shadow: none !important;
+    }
+
+    .page-link:hover {
+        background-color: #FFDAB9;
+        /* Fondo melocotón claro al hover */
+        color: #FF4500;
+        /* Naranja más oscuro al hover */
+        border-color: #FFA500;
+    }
+
+    .page-item.active .page-link {
+        background-color: #FF8C00;
+        /* Fondo naranja para página activa */
+        border-color: #FF8C00;
+        color: white;
+        /* Texto blanco para contraste */
+    }
+
+    .page-item.disabled .page-link {
+        color: #FFD700;
+        /* Color más claro para items deshabilitados */
+        background-color: #fff;
+    }
+</style>
+
+
+</style>
+
+<div class="pagination justify-content-center mt-4">
+    <ul class="d-flex list-unstyled mt-4 shadow-lg bg-body rounded">
+        <!-- Botón "Anterior" -->
+
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page=1">&laquo;&laquo;</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+        </li>
+        {% endif %}
+
+
+
+
+        <!-- Números de página -->
+        {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+        <li class="page-item active">
+            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+        </li>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %} <li class="page-item">
+            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+        {% endif %}
+        {% endfor %}
+
+
+
+            <!-- Botón "Siguiente" -->
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">&raquo;&raquo;</a>
+            </li>
+            {% endif %}
+
+    </ul>
+</div>
+{% endif %}
+
+{% endblock pagination %}

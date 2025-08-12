@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from django.utils.text import slugify
 # Create your models here.
 
     
@@ -17,7 +18,7 @@ class Category(models.Model):
         verbose_name="parent"
     )
     demanded = models.BooleanField(verbose_name='demanded state',null=True,blank=True)
-    
+    slug = models.SlugField(max_length=100, unique=True, blank=True, null=True)
 
 
 
@@ -28,6 +29,10 @@ class Category(models.Model):
     def __str__(self):
         return self.category_name
     
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.category_name)
+        super().save(*args, **kwargs)
 
 
 
@@ -46,3 +51,17 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class Poster(models.Model):
+    code = models.UUIDField(default=uuid.uuid4,editable=False,primary_key=True, verbose_name='id')
+    poster_name = models.CharField(max_length=255,null=False,blank=False)
+    poster_image = models.ImageField(upload_to='posters/',null=False,blank=False)
+    ACTIVE_INACTIVE = [
+        (True,'Active'),
+        (False,'Inactive'),
+    ]
+    state = models.BooleanField(choices=ACTIVE_INACTIVE,default=True,verbose_name='State')
+
+    def __str__(self):
+        return self.poster_name
